@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Scroll */
+.scroll {
+  width: 420px;
+  height: 550px;
+  background: url('https://i.imgur.com/9v7ZQ9K.png') no-repeat center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.6s ease;
+  filter: drop-shadow(0 0 15px rgba(0,0,0,0.8));
+}
+
+/* Open scroll */
+.scroll.open {
+  transform: scaleY(1);
+}
+
+/* Heart */
+.heart {
+  position: absolute;
+  font-size: 45px;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+
+/* Heart animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Letter text */
+.letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 25px;
+  color: #2b1b0f;
+  width: 70%;
+  text-align: center;
+  line-height: 1.7;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  letter-spacing: 1px;
+
+  /* ink effect */
+  text-shadow: 
+    0.5px 0.5px 0 rgba(0,0,0,0.2),
+    1px 1px 2px rgba(0,0,0,0.15);
+}
+
+/* Show text */
+.scroll.open .letter {
+  opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="scroll" id="scroll">
+  <div class="heart" onclick="openScroll()">❤️</div>
+
+  <div class="letter">
+    <!-- PASTE YOUR LETTER HERE -->
+  </div>
+</div>
+
+<script>
+function openScroll() {
+  document.getElementById("scroll").classList.add("open");
+  document.querySelector(".heart").style.display = "none";
+}
+</script>
+
+</body>
+</html>
